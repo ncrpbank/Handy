@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Handy mit Taschenrechner und Apps</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="phone">
+    <div class="app-bar">Mein Handy</div>
+    <div class="screen">
+        <div id="calculator" class="calculator" style="display:none;">
+            <input type="text" id="calc-display" disabled/>
+            <button onclick="appendNumber(7)">7</button>
+            <button onclick="appendNumber(8)">8</button>
+            <button onclick="appendNumber(9)">9</button>
+            <button onclick="appendOperator('+')">+</button>
+            <button onclick="appendNumber(4)">4</button>
+            <button onclick="appendNumber(5)">5</button>
+            <button onclick="appendNumber(6)">6</button>
+            <button onclick="appendOperator('-')">-</button>
+            <button onclick="appendNumber(1)">1</button>
+            <button onclick="appendNumber(2)">2</button>
+            <button onclick="appendNumber(3)">3</button>
+            <button onclick="appendOperator('*')">*</button>
+            <button onclick="appendNumber(0)">0</button>
+            <button onclick="clearDisplay()">C</button>
+            <button onclick="calculateResult()">=</button>
+            <button onclick="appendOperator('/')">/</button>
+        </div>
+        <!-- Andere Apps -->
+        <div id="messages" style="display:none;">
+            <h3>Nachrichten-App</h3>
+        </div>
+        <div id="music" style="display:none;">
+            <h3>Musik-App</h3>
+        </div>
+        <div id="camera" style="display:none;">
+            <h3>Kamera-App</h3>
+        </div>
+        <div id="settings" style="display:none;">
+            <h3>Einstellungen-App</h3>
+        </div>
+    </div>
+    <div class="app-bar">
+        <div class="apps-container">
+            <div class="app-button" onclick="openApp('calculator')">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/6/63/Calculator_icon.svg" alt="Calculator"/>
+            </div>
+            <div class="app-button" onclick="openApp('messages')">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e3/Message_icon.svg/1200px-Message_icon.svg.png" alt="Messages"/>
+            </div>
+            <div class="app-button" onclick="openApp('music')">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4d/Musical_note_icon.svg/1200px-Musical_note_icon.svg.png" alt="Music"/>
+            </div>
+            <div class="app-button" onclick="openApp('camera')">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/0/0b/Camera_icon.svg" alt="Camera"/>
+            </div>
+            <div class="app-button" onclick="openApp('settings')">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/3/3f/Gear_icon.svg" alt="Settings"/>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    function openApp(app) {
+        // Alle Apps ausblenden
+        document.getElementById('calculator').style.display = 'none';
+        document.getElementById('messages').style.display = 'none';
+        document.getElementById('music').style.display = 'none';
+        document.getElementById('camera').style.display = 'none';
+        document.getElementById('settings').style.display = 'none';
+
+        // Die angeklickte App anzeigen
+        if (app === 'calculator') {
+            document.getElementById('calculator').style.display = 'grid';
+        } else if (app === 'messages') {
+            document.getElementById('messages').style.display = 'block';
+        } else if (app === 'music') {
+            document.getElementById('music').style.display = 'block';
+        } else if (app === 'camera') {
+            document.getElementById('camera').style.display = 'block';
+        } else if (app === 'settings') {
+            document.getElementById('settings').style.display = 'block';
+        }
+    }
+
+    let currentInput = '';
+
+    function appendNumber(number) {
+        currentInput += number;
+        document.getElementById('calc-display').value = currentInput;
+    }
+
+    function appendOperator(operator) {
+        currentInput += ' ' + operator + ' ';
+        document.getElementById('calc-display').value = currentInput;
+    }
+
+    function clearDisplay() {
+        currentInput = '';
+        document.getElementById('calc-display').value = '';
+    }
+
+    function calculateResult() {
+        try {
+            currentInput = eval(currentInput).toString();
+            document.getElementById('calc-display').value = currentInput;
+        } catch (e) {
+            document.getElementById('calc-display').value = 'Error';
+        }
+    }
+</script>
+
+</body>
+</html>
