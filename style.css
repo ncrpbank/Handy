@@ -1,0 +1,100 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f2f2f2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.phone {
+    width: 350px;
+    height: 600px;
+    background: #333;
+    border-radius: 30px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+.screen {
+    background: white;
+    flex-grow: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+}
+
+.app-bar {
+    height: 60px;
+    background: #222;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.app-bar .apps-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    width: 100%;
+}
+
+.app-button {
+    width: 50px;
+    height: 50px;
+    background: #555;
+    border-radius: 50%;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+.app-button img {
+    width: 30px;
+    height: 30px;
+}
+
+.apps-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    gap: 20px;
+    justify-items: center;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    max-width: 300px;
+}
+
+.calculator {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+    width: 80%;
+    max-width: 300px;
+}
+
+.calculator input {
+    grid-column: span 4;
+    height: 40px;
+    font-size: 24px;
+    text-align: right;
+}
+
+.calculator button {
+    padding: 20px;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.calculator button:active {
+    background-color: #ddd;
+}
